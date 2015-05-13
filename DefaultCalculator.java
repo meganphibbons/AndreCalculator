@@ -1,7 +1,14 @@
 public class AndreCalculator
 {
-	private static int[] digits = int[50];
-	private static int[] 2digits = int[50];
+	private static ArrayList digits = new ArrayList<int>;
+	private static ArrayList digits2 = new ArrayList<int>;
+	private static final int size = 50;
+	
+	private static void fillArrs()
+	{
+		digits = DigitArray.createDigitArr(digits, size);
+		digits2 = DigitArray.createDigitArr(digits2, size);
+	}
 	/**
 	*@param first the first integer to be multiplied
 	*@param second the second integer to be multiplied
