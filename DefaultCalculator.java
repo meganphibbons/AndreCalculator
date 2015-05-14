@@ -3,15 +3,7 @@ public class AndreCalculator
 	private static ArrayList digits = new ArrayList<int>;
 	private static ArrayList digits2 = new ArrayList<int>;
 	private static ArrayList results = new ArrayList<int>;
-	//private static final int size = 50;
 
-	//private static void fillArrs()
-	//{
-	//	digits = DigitArray.createDigitArr(digits, size);
-	//	digits2 = DigitArray.createDigitArr(digits2, size);
-		//results = DigitArray.createDigitArr(results, size);
-	//}
-	
 	/**
 	 *
 	 *@param first the first integer to be multiplied
@@ -32,13 +24,13 @@ public class AndreCalculator
 			s /= 10;
 		}
 
-//for(int i=0; i< digits.size(); i++)
-//{
-//for(int j = 0; j<digits2.size(); j++)
-//{
-//results.set(i, results.get(i) + digits.get(i)*digits2.get(j));
-//}
-//}
+		for(int i=0; i< digits.size(); i++)
+		{
+			for(int j = 0; j<digits2.size(); j++)
+			{
+				results.set(i, results.get(i) + digits.get(i)*digits2.get(j));
+			}
+		}
 	}
 
 	/**
