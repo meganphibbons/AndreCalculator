@@ -75,7 +75,7 @@ public class AndreCalculator
 		{
 			for(int j = 0; j<digits2.size(); j++)
 			{
-				results.set(i, results.get(i) + digits.get(i)*digits2.get(j));
+				results.set(i+j, results.get(i+j) + digits.get(i)*digits2.get(j));
 			}
 		}
 		for(int i =0; i <results.size(); i++)
