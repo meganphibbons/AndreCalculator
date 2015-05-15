@@ -1,8 +1,11 @@
-public class AndreCalculator
+import java.util.ArrayList;
+import java.util.List;
+
+public class DefaultCalculator
 {
-	private static ArrayList digits = new ArrayList<int>;
-	private static ArrayList digits2 = new ArrayList<int>;
-	private static ArrayList results = new ArrayList<int>;
+	private static List<Integer> digits = new ArrayList<Integer>();
+	private static List<Integer> digits2 = new ArrayList<Integer>();
+	private static List<Integer> results = new ArrayList<Integer>();
 
 	/**
 	 *Multiplies two numbers stored as ints. Prints result as a string
@@ -13,8 +16,8 @@ public class AndreCalculator
 	{
 		if(digits.size()>0)
 		{
-			digits =new ArrayList<int>;
-			digits2 =new ArrayList<int>;
+			digits = new ArrayList<Integer>();
+			digits2 = new ArrayList<Integer>();
 		}
 
 		int f = first;
@@ -47,23 +50,23 @@ public class AndreCalculator
 	 *@param first the first number (stored as a string to bypass length limits) to be multiplied
 	 *@param second the second number (stored as a string to bypass length limits) to be multiplied
 	 */
-	public static void multiply(String first, String second, boolean decimal)
+	public static void multiply(String first, String second)
 	{
-		if(!decimal)
+		if(!(first.contains(".")&&second.contains(".")))
 		{
-			for(int i =0; i < first.length(); i++)
+			for(int i =first.length()-1; i>=0 ; i--)
 			{
-				digits.add(first.substring(i, i+1));
+				digits.add(Integer.parseInt(first.substring(i, i+1)));
 			}
 
-			for(int i = 0; i<second.length(); i++)
+			for(int i = second.length()-1; i>=0; i--)
 			{
-				digits2.add(second.substring(i, i+1));
+				digits2.add(Integer.parseInt(second.substring(i, i+1)));
 			}
 			System.out.println(intMultiplication());
 		}
 	}
-	
+
 	/**
 	 * Multiplies and returns two ints stored in the array lists. 
 	 * @return a string containing the product of the ints stored in the ArrayLists
@@ -75,23 +78,36 @@ public class AndreCalculator
 		{
 			for(int j = 0; j<digits2.size(); j++)
 			{
-				results.set(i+j, results.get(i+j) + digits.get(i)*digits2.get(j));
+				try
+				{
+					results.set(i+j, results.get(i+j) + digits.get(i)*digits2.get(j));
+				}catch(IndexOutOfBoundsException e)
+				{
+					for(int c = results.size(); c<= i+j; c++)
+						results.add(0);
+					results.set(i+j, results.get(i+j) + digits.get(i)*digits2.get(j));
+				}
 			}
 		}
-		for(int i =0; i <results.size(); i++)
+		for(int i =0; i < results.size(); i++)
 		{
-			if((results.get(i)%10)>0)
+			if(results.get(i)>=10)
 			{
-				results.set(i+1, results.get(i+1)+results.get(i)%10);
-				results.set(i, results.get(i)/10);
+				try
+				{
+					results.set(i+1, results.get(i+1)+results.get(i)/10);
+				}catch(IndexOutOfBoundsException e)
+				{
+					results.add(results.get(i)/10);
+				}
+				results.set(i, results.get(i)%10);
 			}
 		}
 		String number = "";
-		for(int num=results.length()-1; num>=0; num--)
+		for(int num=results.size()-1; num>=0; num--)
 		{
 			number+=results.get(num);
 		}
-		//System.out.println(number);
 		return number;
 	}
 }
