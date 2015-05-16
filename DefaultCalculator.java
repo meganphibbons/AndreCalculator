@@ -12,49 +12,51 @@ public class DefaultCalculator
 	private static List<Integer> digits = new ArrayList<Integer>();
 	private static List<Integer> digits2 = new ArrayList<Integer>();
 	private static List<Integer> results = new ArrayList<Integer>();
-	
+
 	private static List<Integer> digitsDecimal = new ArrayList<Integer>();
 	private static List<Integer> digits2Decimal = new ArrayList<Integer>();
 	private static List<Integer> resultsDecimal = new ArrayList<Integer>();
-				//UNUSED
-//	/**
-//	 *Multiplies two numbers stored as ints. Prints result as a string
-//	 *@param first the first integer to be multiplied
-//	 *@param second the second integer to be multiplied
-//	 */
-//	public static String multiply(int first, int second)
-//	{
-//		if(digits.size()>0)
-//		{
-//			digits = new ArrayList<Integer>();
-//			digits2 = new ArrayList<Integer>();
-//		}
-//
-//		int f = first;
-//		int s = second;
-//		while(f/10 >= 0)
-//		{
-//			digits.add(f%10);
-//			f /= 10;
-//		}
-//		while(s/10 >= 0)
-//		{
-//			digits.add(s%10);
-//			s /= 10;
-//		}
-//		//System.out.println(intMultiplication());
-//		return intMultiplication();
-//	}
-				//UNUSED
-//	/**
-//	 * Multiplies two numbers stored as doubles. Prints result as a string
-//	 *@param first the first double to be multiplied
-//	 *@param second the second double to be multiplied
-//	 */
-//	public static String multiply(double first, double second)
-//	{
-//		return null;
-//	}
+	
+	private static boolean negative = false;
+	//UNUSED
+	//	/**
+	//	 *Multiplies two numbers stored as ints. Prints result as a string
+	//	 *@param first the first integer to be multiplied
+	//	 *@param second the second integer to be multiplied
+	//	 */
+	//	public static String multiply(int first, int second)
+	//	{
+	//		if(digits.size()>0)
+	//		{
+	//			digits = new ArrayList<Integer>();
+	//			digits2 = new ArrayList<Integer>();
+	//		}
+	//
+	//		int f = first;
+	//		int s = second;
+	//		while(f/10 >= 0)
+	//		{
+	//			digits.add(f%10);
+	//			f /= 10;
+	//		}
+	//		while(s/10 >= 0)
+	//		{
+	//			digits.add(s%10);
+	//			s /= 10;
+	//		}
+	//		//System.out.println(intMultiplication());
+	//		return intMultiplication();
+	//	}
+	//UNUSED
+	//	/**
+	//	 * Multiplies two numbers stored as doubles. Prints result as a string
+	//	 *@param first the first double to be multiplied
+	//	 *@param second the second double to be multiplied
+	//	 */
+	//	public static String multiply(double first, double second)
+	//	{
+	//		return null;
+	//	}
 
 	/**
 	 * Multiplies two numbers stored as strings. Returns result as a string
@@ -71,6 +73,11 @@ public class DefaultCalculator
 		digits2Decimal = new ArrayList<Integer>();
 		resultsDecimal = new ArrayList<Integer>();
 		
+		if((first.contains("-") || second.contains("-")) && !(first.contains("-") && second.contains("-")))
+			negative = true;
+		else
+			negative = false;
+		
 		if(!(first.contains(".")||second.contains(".")))
 		{
 			for(int i =first.length()-1; i>=0 ; i--)
@@ -84,8 +91,8 @@ public class DefaultCalculator
 			}
 			//System.out.println(intMultiplication());
 			return intMultiplication();
-		}
-		return "We currently do not support decimals. Sorry.";
+		}else
+			return "We currently do not support decimals. Sorry.";
 	}
 
 	/**
@@ -110,7 +117,7 @@ public class DefaultCalculator
 				}
 			}
 		}
-		
+
 		for(int i =0; i < results.size(); i++)
 		{
 			if(results.get(i)>=10)
@@ -125,15 +132,17 @@ public class DefaultCalculator
 				results.set(i, results.get(i)%10);
 			}
 		}
-		
+
 		String number = "";
+		if(negative)
+			number += "-";
 		for(int num=results.size()-1; num>=0; num--)
 		{
 			number+=results.get(num);
 		}
 		return number;
 	}
-	
+
 	/**
 	 * Computes and returns the product of the numbers stored in the ArrayLists
 	 * @return the product of the numbers stored in the array lists as a String
@@ -155,9 +164,9 @@ public class DefaultCalculator
 				}
 			}
 		}
-		
+
 		//TODO track tenths place for decimal results, add secondry forloop to multiply the decimals.
-		
+
 		for(int i =0; i < results.size(); i++)
 		{
 			if(results.get(i)>=10)
@@ -172,13 +181,13 @@ public class DefaultCalculator
 				results.set(i, results.get(i)%10);
 			}
 		}
-		
-//		String number = "";
-//		for(int num=results.size()-1; num>=0; num--)
-//		{
-//			number+=results.get(num);
-//		}
-//		return number;
+
+		//		String number = "";
+		//		for(int num=results.size()-1; num>=0; num--)
+		//		{
+		//			number+=results.get(num);
+		//		}
+		//		return number;
 		return "This function isn't yet avalible.";
 	}
 }
