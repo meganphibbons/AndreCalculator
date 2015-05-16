@@ -55,7 +55,7 @@ public class DefaultCalculator
 	 */
 	public static String multiply(String first, String second)
 	{
-		if(!(first.contains(".")&&second.contains(".")))
+		if(!(first.contains(".")||second.contains(".")))
 		{
 			for(int i =first.length()-1; i>=0 ; i--)
 			{
@@ -69,7 +69,7 @@ public class DefaultCalculator
 			//System.out.println(intMultiplication());
 			return intMultiplication();
 		}
-		return null;
+		return "We currently do not support decimals. Sorry.";
 	}
 
 	/**
