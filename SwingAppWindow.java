@@ -48,11 +48,11 @@ public class SwingAppWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 220);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {150, 150, 150};
-		gridBagLayout.rowHeights = new int[] {90, 80, 60, 60};
+		gridBagLayout.columnWidths = new int[] {200, 200, 200};
+		gridBagLayout.rowHeights = new int[] {60, 60, 40, 60};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0};
 		frame.getContentPane().setLayout(gridBagLayout);
@@ -102,6 +102,7 @@ public class SwingAppWindow {
 		});
 		btnMultiply.setToolTipText("GET ON WITH IT.");
 		GridBagConstraints gbc_btnMultiply = new GridBagConstraints();
+		gbc_btnMultiply.anchor = GridBagConstraints.SOUTH;
 		gbc_btnMultiply.insets = new Insets(0, 0, 5, 5);
 		gbc_btnMultiply.gridx = 1;
 		gbc_btnMultiply.gridy = 2;
@@ -109,9 +110,10 @@ public class SwingAppWindow {
 		
 		textField = new JTextField();
 		GridBagConstraints gbc_output = new GridBagConstraints();
-		gbc_output.insets = new Insets(0, 0, 0, 5);
 		gbc_output.fill = GridBagConstraints.HORIZONTAL;
-		gbc_output.gridx = 1;
+		gbc_output.gridwidth = 3;
+		gbc_output.insets = new Insets(0, 0, 0, 5);
+		gbc_output.gridx = 0;
 		gbc_output.gridy = 3;
 		frame.getContentPane().add(textField, gbc_output);
 		textField.setColumns(10);
