@@ -14,7 +14,7 @@ public class DefaultCalculator
 	 *@param first the first integer to be multiplied
 	 *@param second the second integer to be multiplied
 	 */
-	public static void multiply(int first, int second)
+	public static String multiply(int first, int second)
 	{
 		if(digits.size()>0)
 		{
@@ -34,7 +34,8 @@ public class DefaultCalculator
 			digits.add(s%10);
 			s /= 10;
 		}
-		System.out.println(intMultiplication());
+		//System.out.println(intMultiplication());
+		return intMultiplication();
 	}
 
 	/**
@@ -42,9 +43,9 @@ public class DefaultCalculator
 	 *@param first the first double to be multiplied
 	 *@param second the second double to be multiplied
 	 */
-	public static void multiply(double first, double second)
+	public static String multiply(double first, double second)
 	{
-
+		return null;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class DefaultCalculator
 	 *@param first the first number (stored as a string to bypass length limits) to be multiplied
 	 *@param second the second number (stored as a string to bypass length limits) to be multiplied
 	 */
-	public static void multiply(String first, String second)
+	public static String multiply(String first, String second)
 	{
 		if(!(first.contains(".")&&second.contains(".")))
 		{
@@ -65,8 +66,10 @@ public class DefaultCalculator
 			{
 				digits2.add(Integer.parseInt(second.substring(i, i+1)));
 			}
-			System.out.println(intMultiplication());
+			//System.out.println(intMultiplication());
+			return intMultiplication();
 		}
+		return null;
 	}
 
 	/**
