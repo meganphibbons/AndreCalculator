@@ -64,6 +64,13 @@ public class DefaultCalculator
 	 */
 	public static String multiply(String first, String second)
 	{
+		digits = new ArrayList<Integer>();
+		digits2 = new ArrayList<Integer>();
+		results = new ArrayList<Integer>();
+		digitsDecimal = new ArrayList<Integer>();
+		digits2Decimal = new ArrayList<Integer>();
+		resultsDecimal = new ArrayList<Integer>();
+		
 		if(!(first.contains(".")||second.contains(".")))
 		{
 			for(int i =first.length()-1; i>=0 ; i--)
