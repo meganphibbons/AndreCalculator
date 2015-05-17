@@ -18,45 +18,6 @@ public class DefaultCalculator
 	private static List<Integer> resultsDecimal = new ArrayList<Integer>();
 
 	private static boolean negative = false;
-	//UNUSED
-	//	/**
-	//	 *Multiplies two numbers stored as ints. Prints result as a string
-	//	 *@param first the first integer to be multiplied
-	//	 *@param second the second integer to be multiplied
-	//	 */
-	//	public static String multiply(int first, int second)
-	//	{
-	//		if(digits.size()>0)
-	//		{
-	//			digits = new ArrayList<Integer>();
-	//			digits2 = new ArrayList<Integer>();
-	//		}
-	//
-	//		int f = first;
-	//		int s = second;
-	//		while(f/10 >= 0)
-	//		{
-	//			digits.add(f%10);
-	//			f /= 10;
-	//		}
-	//		while(s/10 >= 0)
-	//		{
-	//			digits.add(s%10);
-	//			s /= 10;
-	//		}
-	//		//System.out.println(intMultiplication());
-	//		return intMultiplication();
-	//	}
-	//UNUSED
-	//	/**
-	//	 * Multiplies two numbers stored as doubles. Prints result as a string
-	//	 *@param first the first double to be multiplied
-	//	 *@param second the second double to be multiplied
-	//	 */
-	//	public static String multiply(double first, double second)
-	//	{
-	//		return null;
-	//	}
 
 	/**
 	 * Multiplies two numbers stored as strings. Returns result as a string
@@ -95,15 +56,37 @@ public class DefaultCalculator
 				{
 					digits2.add(Integer.parseInt(second.substring(i, i+1)));
 				}
-				//System.out.println(intMultiplication());
 				return intMultiplication();
 			}else
+			{
+				int fDec = first.indexOf(".");
+				int sDec = second.indexOf(".");
+
+				for(int i =fDec-1; i>=0 ; i--)
+					digits.add(Integer.parseInt(first.substring(i, i+1)));
+				for(int i = first.length()-1; i>fDec; i--)
+					digitsDecimal.add(Integer.parseInt(first.substring(i, i+1)));
+
+				for(int i = sDec-1; i>=0; i--)
+					digits2.add(Integer.parseInt(second.substring(i, i+1)));
+				for(int i = second.length()-1; i>sDec; i--)
+					digits2Decimal.add(Integer.parseInt(second.substring(i, i+1)));
+
+				//System.out.println(digits + " . " + digitsDecimal + " \n " + digits2 + " . " + digits2Decimal);
+				//return decimalMultiplication();
 				return "We currently do not support decimals. Sorry.";
+			}
 		} catch (Exception e) {
 			return "Unrecognized charachter. Numbers, decimals, and negative signs only please.";
 		}
 	}
 
+//	public static String exponent(String base, String power)
+//	{
+//		if(power >1)
+//			return multiply(base,
+//	}
+	
 	/**
 	 * Multiplies and returns two ints stored in the array lists. 
 	 * @return a string containing the product of the ints stored in the ArrayLists
@@ -174,7 +157,26 @@ public class DefaultCalculator
 			}
 		}
 
-		//TODO track tenths place for decimal results, add secondry forloop to multiply the decimals.
+		for(int i=0; i< digits.size(); i++)
+		{
+			for(int j = 0; j<digits2Decimal.size(); j++)
+			{
+				//try
+				//{
+					if(i - (1+j) < 0)
+						resultsDecimal.set(-(i-(1+j)), resultsDecimal.get(-(i-(1+j))) + digits.get(i)*digits2Decimal.get(j));
+					else
+						results.set(i-j, results.get(i-j) + digits.get(i)*digits2.get(j));
+				//}catch(IndexOutOfBoundsException e)
+				//{
+				//	for(int c = results.size(); c<= i+j; c++)
+				//		results.add(0);
+				//	results.set(i+j, results.get(i+j) + digits.get(i)*digits2.get(j));
+				//}
+			}
+		}
+
+		//TODO track tenths place for decimal results, add secondary for loop to multiply the decimals.
 
 		for(int i =0; i < results.size(); i++)
 		{
