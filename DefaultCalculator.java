@@ -16,7 +16,7 @@ public class DefaultCalculator
 	private static List<Integer> digitsDecimal = new ArrayList<Integer>();
 	private static List<Integer> digits2Decimal = new ArrayList<Integer>();
 	private static List<Integer> resultsDecimal = new ArrayList<Integer>();
-	
+
 	private static boolean negative = false;
 	//UNUSED
 	//	/**
@@ -72,27 +72,36 @@ public class DefaultCalculator
 		digitsDecimal = new ArrayList<Integer>();
 		digits2Decimal = new ArrayList<Integer>();
 		resultsDecimal = new ArrayList<Integer>();
-		
-		if((first.contains("-") || second.contains("-")) && !(first.contains("-") && second.contains("-")))
-			negative = true;
-		else
-			negative = false;
-		
-		if(!(first.contains(".")||second.contains(".")))
-		{
-			for(int i =first.length()-1; i>=0 ; i--)
-			{
-				digits.add(Integer.parseInt(first.substring(i, i+1)));
-			}
 
-			for(int i = second.length()-1; i>=0; i--)
+		try {
+			if((first.contains("-") || second.contains("-")) && !(first.contains("-") && second.contains("-")))
 			{
-				digits2.add(Integer.parseInt(second.substring(i, i+1)));
+				negative = true;
 			}
-			//System.out.println(intMultiplication());
-			return intMultiplication();
-		}else
-			return "We currently do not support decimals. Sorry.";
+			else
+				negative = false;
+
+			first = first.replaceAll("-", "");
+			second = second.replaceAll("-", "");
+
+			if(!(first.contains(".")||second.contains(".")))
+			{
+				for(int i =first.length()-1; i>=0 ; i--)
+				{
+					digits.add(Integer.parseInt(first.substring(i, i+1)));
+				}
+
+				for(int i = second.length()-1; i>=0; i--)
+				{
+					digits2.add(Integer.parseInt(second.substring(i, i+1)));
+				}
+				//System.out.println(intMultiplication());
+				return intMultiplication();
+			}else
+				return "We currently do not support decimals. Sorry.";
+		} catch (Exception e) {
+			return "Unrecognized charachter. Numbers, decimals, and negative signs only please.";
+		}
 	}
 
 	/**
@@ -135,7 +144,7 @@ public class DefaultCalculator
 
 		String number = "";
 		if(negative)
-			number += "-";
+			number +="-";
 		for(int num=results.size()-1; num>=0; num--)
 		{
 			number+=results.get(num);
