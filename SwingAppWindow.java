@@ -13,16 +13,13 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
 
 public class SwingAppWindow {
 
 	private JFrame frmLargeNumberMultiplier;
 	private JTextField first;
 	private JTextField second;
-	private JTextArea outputField;
-	private JScrollBar scrollBar;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -57,10 +54,10 @@ public class SwingAppWindow {
 		frmLargeNumberMultiplier.setBounds(100, 100, 620, 260);
 		frmLargeNumberMultiplier.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {10, 200, 200, 200, 0, 10};
+		gridBagLayout.columnWidths = new int[] {10, 200, 200, 200, 10};
 		gridBagLayout.rowHeights = new int[] {60, 60, 40, 60};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0};
 		frmLargeNumberMultiplier.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblFirstNumber = new JLabel("First Number");
@@ -94,7 +91,7 @@ public class SwingAppWindow {
 		btnMultiply.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				outputField.setText(DefaultCalculator.multiply(first.getText(), second.getText()));
+				textField.setText(DefaultCalculator.multiply(first.getText(), second.getText()));
 			}
 		});
 		
@@ -114,25 +111,15 @@ public class SwingAppWindow {
 		gbc_btnMultiply.gridy = 2;
 		frmLargeNumberMultiplier.getContentPane().add(btnMultiply, gbc_btnMultiply);
 		
-		scrollBar = new JScrollBar();
-//		GridBagConstraints gbc_scrollBar = new GridBagConstraints();
-//		gbc_scrollBar.insets = new Insets(0, 0, 0, 5);
-//		gbc_scrollBar.gridx = 4;
-//		gbc_scrollBar.gridy = 3;
-//		frmLargeNumberMultiplier.getContentPane().add(scrollBar, gbc_scrollBar);
-		
-		outputField = new JTextArea();
-		outputField.setLineWrap(true);
-		outputField.add(scrollBar);
-		GridBagConstraints gbc_outputField = new GridBagConstraints();
-		gbc_outputField.insets = new Insets(0, 0, 0, 5);
-		gbc_outputField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_outputField.gridwidth = 3;
-		gbc_outputField.gridx = 1;
-		gbc_outputField.gridy = 3;
-		frmLargeNumberMultiplier.getContentPane().add(outputField, gbc_outputField);
-		outputField.setColumns(10);
-		
+		textField = new JTextField();
+		GridBagConstraints gbc_output = new GridBagConstraints();
+		gbc_output.insets = new Insets(0, 0, 0, 5);
+		gbc_output.fill = GridBagConstraints.HORIZONTAL;
+		gbc_output.gridwidth = 3;
+		gbc_output.gridx = 1;
+		gbc_output.gridy = 3;
+		frmLargeNumberMultiplier.getContentPane().add(textField, gbc_output);
+		textField.setColumns(10);
 	}
 
 }
