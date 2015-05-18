@@ -25,6 +25,7 @@ public class SwingAppWindow {
 	private JTextField second;
 	private JTextArea outputField;
 	private JScrollPane scrollPane;
+	private JButton btnExponents;
 
 	/**
 	 * Launch the application.
@@ -115,6 +116,20 @@ public class SwingAppWindow {
 		gbc_btnMultiply.gridx = 1;
 		gbc_btnMultiply.gridy = 2;
 		frmLargeNumberMultiplier.getContentPane().add(btnMultiply, gbc_btnMultiply);
+		
+		btnExponents = new JButton("Exponent");
+		btnExponents.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				outputField.setText(DefaultCalculator.exponent(first.getText(), second.getText()));
+			}
+		});
+		GridBagConstraints gbc_btnExponents = new GridBagConstraints();
+		gbc_btnExponents.anchor = GridBagConstraints.SOUTH;
+		gbc_btnExponents.insets = new Insets(0, 0, 5, 0);
+		gbc_btnExponents.gridx = 2;
+		gbc_btnExponents.gridy = 2;
+		frmLargeNumberMultiplier.getContentPane().add(btnExponents, gbc_btnExponents);
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
