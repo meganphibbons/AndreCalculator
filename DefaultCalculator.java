@@ -91,6 +91,9 @@ public class DefaultCalculator
 		} catch (IndexOutOfBoundsException e)
 		{
 			return "Number too large.";
+		}catch(Exception e)
+		{
+			return "Unknown error.";
 		}
 
 	}
