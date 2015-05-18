@@ -26,6 +26,9 @@ public class SwingAppWindow {
 	private JTextArea outputField;
 	private JScrollPane scrollPane;
 	private JButton btnExponents;
+	private JLabel lblNewLabel;
+	private JLabel lblPowerForExponential;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -61,9 +64,9 @@ public class SwingAppWindow {
 		frmLargeNumberMultiplier.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {200, 200, 200};
-		gridBagLayout.rowHeights = new int[] {60, 60, 40, 60};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0};
+		gridBagLayout.rowHeights = new int[] {60, 0, 60, 40, 60};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0};
 		frmLargeNumberMultiplier.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblFirstNumber = new JLabel("First Number");
@@ -83,13 +86,27 @@ public class SwingAppWindow {
 		gbc_lblSecondNumber.gridy = 0;
 		frmLargeNumberMultiplier.getContentPane().add(lblSecondNumber, gbc_lblSecondNumber);
 		
+		lblNewLabel = new JLabel("Base for exponential operations");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 1;
+		frmLargeNumberMultiplier.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+		
+		lblPowerForExponential = new JLabel("Power for exponential operations");
+		GridBagConstraints gbc_lblPowerForExponential = new GridBagConstraints();
+		gbc_lblPowerForExponential.insets = new Insets(0, 0, 5, 0);
+		gbc_lblPowerForExponential.gridx = 2;
+		gbc_lblPowerForExponential.gridy = 1;
+		frmLargeNumberMultiplier.getContentPane().add(lblPowerForExponential, gbc_lblPowerForExponential);
+		
 		first = new JTextField();
 		first.setToolTipText("");
 		GridBagConstraints gbc_first = new GridBagConstraints();
 		gbc_first.fill = GridBagConstraints.BOTH;
 		gbc_first.insets = new Insets(0, 0, 5, 5);
 		gbc_first.gridx = 0;
-		gbc_first.gridy = 1;
+		gbc_first.gridy = 2;
 		frmLargeNumberMultiplier.getContentPane().add(first, gbc_first);
 		first.setColumns(10);
 		
@@ -106,15 +123,26 @@ public class SwingAppWindow {
 		gbc_second.fill = GridBagConstraints.BOTH;
 		gbc_second.insets = new Insets(0, 0, 5, 0);
 		gbc_second.gridx = 2;
-		gbc_second.gridy = 1;
+		gbc_second.gridy = 2;
 		frmLargeNumberMultiplier.getContentPane().add(second, gbc_second);
 		second.setColumns(10);
+		
+//		btnNewButton = new JButton("Button");
+//		btnNewButton.setEnabled(false);
+//		btnNewButton.setToolTipText("No, it doesn't do anything yet.");
+//		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+//		gbc_btnNewButton.anchor = GridBagConstraints.SOUTH;
+//		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+//		gbc_btnNewButton.gridx = 0;
+//		gbc_btnNewButton.gridy = 3;
+//		frmLargeNumberMultiplier.getContentPane().add(btnNewButton, gbc_btnNewButton);
+		
 		btnMultiply.setToolTipText("GET ON WITH IT.");
 		GridBagConstraints gbc_btnMultiply = new GridBagConstraints();
 		gbc_btnMultiply.anchor = GridBagConstraints.SOUTH;
 		gbc_btnMultiply.insets = new Insets(0, 0, 5, 5);
 		gbc_btnMultiply.gridx = 1;
-		gbc_btnMultiply.gridy = 2;
+		gbc_btnMultiply.gridy = 3;
 		frmLargeNumberMultiplier.getContentPane().add(btnMultiply, gbc_btnMultiply);
 		
 		btnExponents = new JButton("Exponent");
@@ -128,7 +156,7 @@ public class SwingAppWindow {
 		gbc_btnExponents.anchor = GridBagConstraints.SOUTH;
 		gbc_btnExponents.insets = new Insets(0, 0, 5, 0);
 		gbc_btnExponents.gridx = 2;
-		gbc_btnExponents.gridy = 2;
+		gbc_btnExponents.gridy = 3;
 		frmLargeNumberMultiplier.getContentPane().add(btnExponents, gbc_btnExponents);
 		
 		scrollPane = new JScrollPane();
@@ -136,7 +164,7 @@ public class SwingAppWindow {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 3;
+		gbc_scrollPane.gridy = 4;
 		frmLargeNumberMultiplier.getContentPane().add(scrollPane, gbc_scrollPane);
 //		frmLargeNumberMultiplier.getContentPane().add(scrollBar, gbc_scrollBar);
 		
