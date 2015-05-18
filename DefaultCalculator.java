@@ -81,12 +81,21 @@ public class DefaultCalculator
 		}
 	}
 
-//	public static String exponent(String base, String power)
-//	{
-//		if(power >1)
-//			return multiply(base,
-//	}
-	
+	public static String exponent(String base, String power)
+	{	
+		if (power.contains("."))
+			return "We do not currently support rationals.";
+		else if (Integer.parseInt(power) >= 1) {
+			Integer decrementPower = Integer.parseInt(power) - 1;
+			return multiply(base, exponent(base, decrementPower.toString()));
+		} else if (Integer.parseInt(power) < 0)
+			return "We don't yet support negative exponents.";
+		else if (Integer.parseInt(power) == 0)
+			return "1";
+		else
+			return "An error occured. Please check your inputs for unrecognized charachters.";
+	}
+
 	/**
 	 * Multiplies and returns two ints stored in the array lists. 
 	 * @return a string containing the product of the ints stored in the ArrayLists
@@ -163,10 +172,10 @@ public class DefaultCalculator
 			{
 				//try
 				//{
-					if(i - (1+j) < 0)
-						resultsDecimal.set(-(i-(1+j)), resultsDecimal.get(-(i-(1+j))) + digits.get(i)*digits2Decimal.get(j));
-					else
-						results.set(i-j, results.get(i-j) + digits.get(i)*digits2.get(j));
+				if(i - (1+j) < 0)
+					resultsDecimal.set(-(i-(1+j)), resultsDecimal.get(-(i-(1+j))) + digits.get(i)*digits2Decimal.get(j));
+				else
+					results.set(i-j, results.get(i-j) + digits.get(i)*digits2.get(j));
 				//}catch(IndexOutOfBoundsException e)
 				//{
 				//	for(int c = results.size(); c<= i+j; c++)
